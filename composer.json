@@ -1,0 +1,17 @@
+{
+    "name": "parth/designpattern",
+    "description": "This repo is created to learn design pattern with php\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001bimplement design pattern with php",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Parth Shah",
+            "email": "parthforweb@gmail.com"
+        }
+    ],
+    "require": {}
+}
