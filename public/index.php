@@ -1,10 +1,14 @@
 <?php
 
 use App\Structural\Adapter\JSONReader;
+use App\Structural\Adapter1\AndroidToIphoneChargerAdapter;
+use App\Structural\Adapter1\Iphone;
 use App\Structural\Bridge\TwokVideo;
 use App\Structural\Bridge\YoutubePlatform;
 use App\Structural\Composite\FolderComponent;
 use App\Structural\Composite1\FieldsetComponent;
+use App\Structural\Decorator\WifiRoomBooking;
+use App\Structural\Facade\FacadePaymentLib;
 
 require_once(__DIR__ . "/../vendor/autoload.php");
 
@@ -17,12 +21,14 @@ use App\Creational\FactoryMethod\SMSProduct;
 
 use App\Creational\Prototype\PrototypePattern;
 use App\Creational\Singleton\SignletonPattern;
+use App\Structural\Adapter1\IPhoneCharger;
 use App\Structural\Adapter\XMLReader;
 use App\Structural\Adapter\XMLToJSONAdapter;
 use App\Structural\Bridge\FourkVideo;
 use App\Structural\Composite1\FieldComponent;
 use App\Structural\Composite1\FormComponent;
 use App\Structural\Composite\FileComponent;
+use App\Structural\Decorator\SingleRoomBooking;
 
 
 
@@ -41,6 +47,22 @@ echo $form->render();
 
 exit;
 
+
+
+$iphoneCharger =  new IPhoneCharger();
+$chargerAdapter =new AndroidToIphoneChargerAdapter($iphoneCharger);
+$chargerAdapter->charge();
+
+
+exit;
+$facadePaymentLib = new FacadePaymentLib();
+$facadePaymentLib->processPayment();
+exit;
+
+
+$singleRoomBooking = new SingleRoomBooking();
+$wifi = new WifiRoomBooking($singleRoomBooking);
+echo $wifi->getPrice();
 
 
 $obj1 = SignletonPattern::getInstance();
