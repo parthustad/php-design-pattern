@@ -1,5 +1,9 @@
 <?php
-
+require_once(__DIR__ . "/../vendor/autoload.php");
+use App\Behavioral\ChainOfResponsibilities\EmailMiddleware;
+use App\Behavioral\ChainOfResponsibilities\IDMiddleware;
+use App\Behavioral\ChainOfResponsibilities\NameMiddleware;
+use App\Behavioral\ChainOfResponsibilities\User;
 use App\Structural\Adapter\JSONReader;
 use App\Structural\Adapter1\AndroidToIphoneChargerAdapter;
 use App\Structural\Adapter1\Iphone;
@@ -10,7 +14,6 @@ use App\Structural\Composite1\FieldsetComponent;
 use App\Structural\Decorator\WifiRoomBooking;
 use App\Structural\Facade\FacadePaymentLib;
 
-require_once(__DIR__ . "/../vendor/autoload.php");
 
 use App\Creational\AbstractFactory\HPFactory;
 use App\Creational\AbstractFactory\LogiTechFactory;
@@ -31,6 +34,20 @@ use App\Structural\Composite\FileComponent;
 use App\Structural\Decorator\SingleRoomBooking;
 
 
+$user = new User();
+$idMiddleware = new IDMiddleware();
+$nameMiddleware = new NameMiddleware();
+$emailMiddleware = new EmailMiddleware();
+
+$idMiddleware->then($nameMiddleware );
+$nameMiddleware->then($emailMiddleware);
+$idMiddleware->check($user);
+
+
+
+
+
+exit;
 
 $fieldSet = new FieldsetComponent("Customer", "customer");
 $fieldSet->addFieldComponent(new FieldComponent("Username", "username", "text", "parth1"));
